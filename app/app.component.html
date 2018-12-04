@@ -1,0 +1,55 @@
+<div class="d-flex justify-content-center align-items-center">
+  <form class="form col-md-4 col-md-offset-4" [formGroup]="form1" (ngSubmit)="onSave(form1.value)">
+    <div class="form-group">
+      <div class="input-group">
+        <input type="text" #sno [formControl]="form1.controls.stud_no" class="form-control" placeholder="Stud ID">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="input-group">
+        <input type="text" [formControl]="form1.controls.stud_name" class="form-control" placeholder="Stud_name">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="input-group">
+        <input type="text" [formControl]="form1.controls.stud_marks" class="form-control" placeholder="stud_marks">
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="input-group">
+        <input type="text" 
+        [formControl]="form1.controls.stud_phone" 
+        class="form-control" 
+        placeholder="stud_phone"
+        >
+      </div>
+    </div>
+
+    <div class="form-group text-center">
+      <button type="submit" class="btn btn-success">Add</button>
+      <button type="button" class="btn btn-info" (click)="onEdit(form1.value)">Update</button>
+      <button type="button" class="btn btn-danger" (click)="onDel(sno.value)">Delete</button>
+      <button type="button" class="btn btn-warning" (click)="onView()">View</button>
+    </div>
+  </form>
+</div>
+
+<div>
+  <table class="table table-striped">
+    <tr>
+    <th>No</th>
+    <th>Name</th>
+    <th>Marks</th>
+    <th>Phone</th>
+  </tr>
+  <tr *ngFor="let s of studs">
+    <td>{{s['stud_no']}}</td>
+    <td>{{s['stud_name']}}</td>
+    <td>{{s.stud_marks}}</td>
+    <td>{{s.stud_phone}}</td>
+  </tr>
+
+  </table>
+</div>
